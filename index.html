@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <img src="chempals_logo.png" alt="Your Logo" style="display: block; margin-left: auto; margin-right: auto; width: 25%;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Links for ChemPALS Events & Activities</title>
@@ -24,24 +25,115 @@
         .fourPmockpres { background-color: #2867B2; }
         .CommitteeSignUp { background-color: #333; }
 
+        .timedlinks a {
+            margin: 10px;
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+
+        .table-centered {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
     </style>
 </head>
+
 <body>
 
     <h1>Connect With Us</h1>
     <div class="links">
         <!-- Replace '#' with your actual social media links -->
         <a href="https://www.instagram.com/euchempals/" class="instagram">Instagram</a>
-        <a href="https://www.eusa.ed.ac.uk/activities/view/chempals" class="eusa">EUSA Website</a>
+        <a href="https://www.eusa.ed.ac.uk/activities/view/chempals" class="eusa">ChemPALS on EUSA Website</a>
     </div>
 
     <h1>Sign-Up Links</h1>
-    <div class="links">
-        <!-- Replace '#' with your actual social media links -->
-        <a href="https://forms.office.com/e/XZRTHfVxyT" class="sitevisit">Express your interest for the site visits we're organising</a>
-        <a href="https://forms.office.com/e/xktcA0KUgR" class="fourPmockpres">4P Mock Presentation</a>
-        <a href="https://forms.office.com/e/Zb1i40efja" class="CommitteeSignUp">ChemPALS Committee Recruitment</a>
+    <div class="timedlinks">
+        <table class="table-centered">
+            <tr>
+                <th>Event</th>
+                <th>Sign-Up Deadline</th>
+                <th>Countdown</th>
+            </tr>
+            <tr>
+                <td><a href="https://forms.office.com/e/XZRTHfVxyT" class="sitevisit" data-deadline="2024-03-04T12:00:00">Site Visits: Expression of Interest</a></td>
+                <td>12:00 PM, 4th March 2024</td>
+                <td id="countdown1"></td>
+            </tr>
+            <tr>
+                <td><a href="https://forms.office.com/e/xktcA0KUgR" class="fourPmockpres" data-deadline="2024-03-04T12:00:00">4P Mock Presentation</a></td>
+                <td>12:00 PM, 4th March 2024</td>
+                <td id="countdown2"></td>
+            </tr>
+            <tr>
+                <td><a href="https://forms.office.com/e/Zb1i40efja" class="CommitteeSignUp" data-deadline="2024-02-28T12:00:00">ChemPALS Committee Recruitment</a></td>
+                <td>12:00 PM, 28th February 2024</td>
+                <td id="countdown3"></td>
+            </tr>
+        </table>
+
     </div>
+
+<script>
+    // JavaScript to delete the link once the deadline is reached.
+document.addEventListener('DOMContentLoaded', (event) => {
+    var links = document.querySelectorAll('.timedlinks a');
+    var currentDate = new Date();
+
+    links.forEach(function(link) {
+        var deadline = new Date(link.getAttribute('data-deadline'));
+
+        if (currentDate > deadline) {
+            var parentRow = link.closest('tr'); // Finds the closest <tr> ancestor of the link
+            if (parentRow) parentRow.style.display = 'none'; // Hides the entire row
+        }
+    });
+});
+</script>
+
+<script>
+        // JavaScript to handle the countdown
+
+        // Function to update the countdown
+        function updateCountdown(targetId, deadline) {
+            var now = new Date().getTime();
+            var distance = deadline - now;
+            if (distance < 0) {
+                document.getElementById(targetId).innerHTML = "Expired";
+                return;
+            }
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById(targetId).innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+        }
+
+        // Set the date we're counting down to
+        var deadlines = {
+            'countdown1': new Date("2024-03-04T12:00:00").getTime(),
+            'countdown2': new Date("2024-03-04T12:00:00").getTime(),
+            'countdown3': new Date("2024-02-28T12:00:00").getTime()
+            // Add more deadlines as needed
+        };
+
+        // Update the countdown every 1 second
+        var x = setInterval(function() {
+            for (var targetId in deadlines) {
+                updateCountdown(targetId, deadlines[targetId]);
+            }
+        }, 1000);
+    </script>
 
 </body>
 </html>
