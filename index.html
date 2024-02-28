@@ -241,7 +241,7 @@
 
 
 <script>
-    // JavaScript to delete the link once the deadline is reached.
+    // JavaScript to highlight the link red once the deadline is reached.
 document.addEventListener('DOMContentLoaded', (event) => {
     var links = document.querySelectorAll('.timedlinks a');
     var currentDate = new Date();
@@ -251,7 +251,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         if (currentDate > deadline) {
             var parentRow = link.closest('tr'); // Finds the closest <tr> ancestor of the link
-            if (parentRow) parentRow.style.display = 'none'; // Hides the entire row
+            if (parentRow) {
+                // Change the text color of each cell in the row to red
+                parentRow.querySelectorAll('td').forEach(td => td.style.color = 'red');
+            }
         }
     });
 });
@@ -265,7 +268,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             var now = new Date().getTime();
             var distance = deadline - now;
             if (distance < 0) {
-                document.getElementById(targetId).innerHTML = "Expired";
+                document.getElementById(targetId).innerHTML = "Expired, but deadline may be extended. Click on the link to see!";
                 return;
             }
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
