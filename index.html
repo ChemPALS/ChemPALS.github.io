@@ -4,7 +4,7 @@
     <img src="chempals_logo.png" alt="Your Logo" style="display: block; margin-left: auto; margin-right: auto; width: 25%;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Links for ChemPALS Events & Activities</title>
+    <title>Unofficial Website for ChemPALS</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -67,7 +67,31 @@
 .hamburger-icon::after {
     bottom: -6px;
 }
+/*collapsible tab*/
+    .collapsible {
+        background-color: transparent;
+        color: black;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: center;
+        outline: none;
+        font-size: 15px;
+    }
 
+    .active, .collapsible:hover {
+        background-color: #555;
+    }
+
+    .content {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        text-align: left;
+        background-color: #f1f1f1;
+    }
 
     </style>
 </head>
@@ -83,6 +107,15 @@
         </div>
     </div>
 
+<!-- this section is reserved for info regarding events e.g. site visits-->
+
+<div id="Events">
+        <button class="collapsible"><span class="hamburger-icon"></span>
+            Calendar</button>
+        <div class="content">
+            <p> Coming soon...</p>
+        </div>
+    </div>
 
     <h1>Connect With Us</h1>
     <div class="links">
@@ -197,52 +230,23 @@
 </section>
 
 
-    <script>
-        // Javascript to make 'About Us' section collapsible
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
+<script>
+    // Javascript to make 'About Us' section collapsible
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
 
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.maxHeight){
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            });
-        }
-    </script>
-
-    <style>
-        /* Add this style within your <head> section or in an external stylesheet */
-        .collapsible {
-            background-color: transparent;
-            color: black;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: center;
-            outline: none;
-            font-size: 15px;
-        }
-
-        .active, .collapsible:hover {
-            background-color: #555;
-        }
-
-        .content {
-            padding: 0 18px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.2s ease-out;
-            text-align: left;
-            background-color: #f1f1f1;
-        }
-    </style>
-
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
 
 <script>
     // JavaScript to highlight the link red once the deadline is reached.
