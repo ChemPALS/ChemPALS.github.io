@@ -24,6 +24,7 @@
         .sitevisit { background-color: #1DA1F2; }
         .fourPmockpres { background-color: #2867B2; }
         .CommitteeSignUp { background-color: #333; }
+        .employedInternships {background-color: #E1306C}
 
         .timedlinks a {
             margin: 10px;
@@ -154,6 +155,34 @@
         </table>
 
     </div>
+    <h1>employ.ed Internships *** Not with ChemPALS ***</h1>
+    <div class="timedlinks">
+        <table class="table-centered">
+            <tr>
+                <th>Role</th>
+                <th>Deadline</th>
+                <th>Countdown</th>
+
+            </tr>
+            <tr>
+                <td><a href="https://edin.ac/3UGLDna" class = "employedInternships" data-deadline="2024-03-13T23:59:00">Student Support Intern</a></td>
+                <td>March 13th 11.59pm</td>
+                <td id="countdown4"></td>
+            </tr>
+            <tr>
+                <td><a href="https://edin.ac/48zbUaq" class = "employedInternships" data-deadline="2024-03-13T23:59:00">Sustainability Intern</a></td>
+                <td>March 13th 11.59pm</td>
+                <td id="countdown5"></td>
+
+            </tr>
+            <tr>
+                <td><a href="https://edin.ac/48BMwRs" class = "employedInternships" data-deadline="2024-03-13T23:59:00">Analytical Chemistry Intern</a></td>
+                <td>March 13th 11.59pm</td>
+                <td id="countdown6"></td>
+            </tr>
+        </table>
+
+    </div>
 
 <section id="chempals-sessions">
     <h1>ChemPALS Drop-in Sessions Schedule</h1>
@@ -276,7 +305,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             var now = new Date().getTime();
             var distance = deadline - now;
             if (distance < 0) {
-                document.getElementById(targetId).innerHTML = "Expired, but deadline may be extended. Click on the link to see!";
+                document.getElementById(targetId).innerHTML = "Expired";
                 return;
             }
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -292,7 +321,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         var deadlines = {
             'countdown1': new Date("2024-03-04T12:00:00").getTime(),
             'countdown2': new Date("2024-03-04T12:00:00").getTime(),
-            'countdown3': new Date("2024-02-28T12:00:00").getTime()
+            'countdown3': new Date("2024-02-28T12:00:00").getTime(),
+            'countdown4': new Date("2024-03-13T23:59:00").getTime(),
+            'countdown5': new Date("2024-03-13T23:59:00").getTime(),
+            'countdown6': new Date("2024-03-13T23:59:00").getTime()
             // Add more deadlines as needed
         };
 
